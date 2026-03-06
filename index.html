@@ -1,222 +1,863 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ibrahim Benjulamard | Lead Backend & Systems Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Lead .NET Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:'Inter',sans-serif;background:#0b1120;color:#e2e8f0}
-.container{max-width:1150px;margin:auto;padding:40px 24px}
+:root {
+  --bg: #080c12;
+  --surface: #0d1420;
+  --surface2: #111827;
+  --border: rgba(255,255,255,0.07);
+  --border-bright: rgba(99,210,255,0.25);
+  --cyan: #63d2ff;
+  --cyan-dim: rgba(99,210,255,0.12);
+  --green: #4ade80;
+  --text: #e2e8f0;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  --white: #ffffff;
+}
 
-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
-nav a{color:#cbd5f5;text-decoration:none;margin-left:20px;font-size:14px}
-nav a:hover{color:white}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-.hero{padding:100px 0 80px 0}
-.hero h1{font-size:54px;margin:0;line-height:1.1}
-.hero span{color:#60a5fa}
-.hero p{margin-top:20px;color:#94a3b8;font-size:18px;max-width:650px}
-.hero-buttons{margin-top:30px}
-.btn{display:inline-block;padding:12px 22px;border-radius:8px;background:#3b82f6;color:white;text-decoration:none;font-weight:600;margin-right:12px}
-.btn-outline{border:1px solid #475569;padding:12px 22px;border-radius:8px;color:#e2e8f0;text-decoration:none}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-.stats{display:flex;gap:40px;margin-top:50px;flex-wrap:wrap}
-.stat h3{margin:0;font-size:28px;color:#60a5fa}
-.stat p{margin:4px 0;color:#94a3b8}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(99,210,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,210,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
 
-h2{margin-top:80px;margin-bottom:24px;font-size:30px}
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; left: 60%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(99,210,255,0.05) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+/* ── STICKY DOWNLOAD BAR ── */
+.dl-bar {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 100;
+}
 
-.card{background:#111827;padding:26px;border-radius:14px;border:1px solid #1f2937;transition:all .25s}
-.card:hover{transform:translateY(-6px);border-color:#3b82f6}
+.dl-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cyan);
+  color: #080c12;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(99,210,255,0.35), 0 4px 16px rgba(0,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  text-decoration: none;
+}
 
-.skill{display:inline-block;background:#1f2937;padding:8px 12px;border-radius:6px;font-size:14px;margin:6px}
+.dl-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 36px rgba(99,210,255,0.5), 0 8px 24px rgba(0,0,0,0.5);
+  background: #88dcff;
+}
 
-.project-title{font-weight:600;font-size:18px;margin-bottom:8px}
-.project-tech{font-size:13px;color:#94a3b8;margin-top:10px}
+.dl-btn:active { transform: translateY(0); }
 
-.timeline-item{margin-bottom:26px}
-.timeline-item strong{display:block;font-size:16px}
-.timeline-item span{font-size:13px;color:#94a3b8}
+.dl-btn svg { flex-shrink: 0; }
 
-.contact-card{text-align:center}
-.contact-card p{color:#94a3b8}
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 40px 100px;
+  position: relative; z-index: 1;
+}
 
-footer{text-align:center;margin-top:80px;color:#64748b;font-size:14px}
+/* ── HEADER ── */
+header {
+  margin-bottom: 64px;
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cyan-dim);
+  border: 1px solid var(--border-bright);
+  color: var(--cyan);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--cyan);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+h1 .accent { color: var(--cyan); }
+
+.tagline {
+  font-size: 15px;
+  color: var(--text-dim);
+  font-weight: 300;
+  max-width: 460px;
+  line-height: 1.7;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-item:hover { color: var(--cyan); }
+
+.contact-item .dot {
+  width: 4px; height: 4px;
+  background: var(--cyan);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.header-divider {
+  margin-top: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan) 0%, rgba(99,210,255,0.3) 30%, transparent 70%);
+}
+
+/* ── STATS ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 40px 0 72px;
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+}
+
+.stat {
+  background: var(--surface);
+  padding: 24px 20px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.stat:hover { background: var(--surface2); }
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cyan);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── SECTIONS ── */
+.section {
+  margin-bottom: 72px;
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.section:nth-child(3) { animation-delay: 0.25s; }
+.section:nth-child(4) { animation-delay: 0.3s; }
+.section:nth-child(5) { animation-delay: 0.35s; }
+.section:nth-child(6) { animation-delay: 0.4s; }
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.section-label h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── SUMMARY ── */
+.summary-card {
+  background: linear-gradient(135deg, rgba(99,210,255,0.06) 0%, rgba(99,210,255,0.02) 100%);
+  border: 1px solid var(--border-bright);
+  padding: 28px 32px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, var(--cyan), transparent);
+}
+
+.summary-card p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-dim);
+}
+
+.summary-card strong { color: var(--text); font-weight: 600; }
+
+/* ── EXPERIENCE ── */
+.exp-list { display: flex; flex-direction: column; gap: 2px; }
+
+.exp-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.exp-item:hover { border-color: rgba(99,210,255,0.2); }
+
+.exp-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 16px;
+  padding: 24px 28px 20px;
+}
+
+.exp-role {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.exp-company-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exp-company {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cyan);
+}
+
+.exp-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.04);
+  padding: 2px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.exp-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: right;
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.exp-body { padding: 0 28px 24px; }
+
+.exp-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 20px;
+}
+
+.exp-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.exp-points li {
+  display: flex;
+  gap: 12px;
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.exp-points li::before {
+  content: '▹';
+  color: var(--cyan);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.02);
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+}
+
+.chip:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+.chip.key { border-color: rgba(99,210,255,0.3); color: var(--cyan); background: var(--cyan-dim); }
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.skill-block {
+  background: var(--surface);
+  padding: 24px 24px 20px;
+}
+
+.skill-block-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-items { display: flex; flex-direction: column; gap: 8px; }
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-row::before {
+  content: '';
+  width: 4px; height: 4px;
+  background: var(--cyan);
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.skill-name {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+/* ── STRENGTHS ── */
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.strength {
+  background: var(--surface);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.strength:hover { background: var(--surface2); }
+
+.strength-icon {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.strength-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.strength-desc {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.strength::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40px; height: 40px;
+  background: radial-gradient(circle at top right, rgba(99,210,255,0.1), transparent 70%);
+}
+
+/* ── FOOTER ── */
+footer {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--green);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.footer-right::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── PRINT ── */
+@media print {
+  .dl-bar { display: none; }
+  body { background: #fff; color: #000; }
+  body::before, body::after { display: none; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .page { padding: 40px 20px 60px; }
+  .header-top { flex-direction: column; }
+  .contacts { align-items: flex-start; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .exp-header { grid-template-columns: 1fr; }
+  .exp-date { text-align: left; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .strengths-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .dl-bar { bottom: 20px; right: 20px; }
+}
 </style>
 </head>
 <body>
 
-<div class="container">
-
-<nav>
-<div><strong>Ibrahim</strong></div>
-<div>
-<a href="#about">About</a>
-<a href="#systems">Systems</a>
-<a href="#projects">Projects</a>
-<a href="#skills">Skills</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-
-<section class="hero">
-<h1>Ibrahim Benjulamard </h1>
-<h3>Senior backend engineer</h3>
-<p>
-<B>Senior Software Engineer</B> with 11 years of hands-on experience building and supporting enterprise systems across banking, fintech, and consulting industries. I have spent over 5.5 years in senior-level roles, working on backend-heavy and full-stack applications that require scalability, security, and reliability.
-My background includes delivering solutions for global organizations such as Deloitte, LSEG, Krungsri, and BRINK’s, where I’ve collaborated closely with cross-functional teams to turn complex business requirements into production-ready systems. I enjoy working on challenging problems, improving system performance, and building software that delivers real business value.
-I’m particularly experienced in backend development, system integration, and enterprise application design, and I thrive in environments that value clean architecture, collaboration, and continuous improvement.
-</p>
-
-<div class="hero-buttons">
-<a class="btn" href="#contact">Contact Me</a>
-<a class="btn-outline" href="#projects">View Projects</a>
+<!-- DOWNLOAD BUTTON -->
+<div class="dl-bar">
+  <button class="dl-btn" onclick="window.print()">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Download PDF
+  </button>
 </div>
 
-<div class="stats">
-<div class="stat">
-<h3>8+ Years</h3>
-<p>Software Engineering</p>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div>
+        <div class="badge">Lead .NET Engineer · Available</div>
+        <h1>Ibrahim<br><span class="accent">Benjulamard</span></h1>
+        <p class="tagline">10+ years engineering distributed systems across fintech, insurance &amp; logistics. I lead teams, modernize platforms, and ship things that scale.</p>
+      </div>
+      <div class="contacts">
+        <a href="ibr.benjulamard@gmail.com" class="contact-item"><span class="dot"></span>ibr.benjulamard@gmail.com</a>
+        <a href="https://linkedin.com/in/yourprofile" class="contact-item"><span class="dot"></span>linkedin.com/in/yourprofile</a>
+        <a href="https://github.com/ibrben" class="contact-item"><span class="dot"></span>github.com/ibrben</a>
+        <span class="contact-item"><span class="dot"></span>Bangkok, Thailand</span>
+      </div>
+    </div>
+    <div class="header-divider"></div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Companies</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Industries</div></div>
+    
+  </div>
+
+  <!-- PROFILE -->
+  <div class="section">
+    <div class="section-label"><h2>// Profile</h2></div>
+    <div class="summary-card">
+      <p>Accomplished <strong>Lead .NET Engineer</strong> with deep expertise in <strong>cloud-native architecture, real-time data systems, and large-scale platform modernization</strong>. Proven leadership across Deloitte, LSEG, and Krungsri — steering integration teams, defining technical strategy, and delivering complex multi-system migrations with zero critical regression. Comfortable working across the full stack from infrastructure-as-code to event-driven backends and API design. Driven by clean architecture, resilience patterns, and shipping systems that teams are proud to maintain.</p>
+    </div>
+  </div>
+
+  <!-- STRENGTHS -->
+  <div class="section">
+    <div class="section-label"><h2>// Core Strengths</h2></div>
+    <div class="strengths-grid">
+      <div class="strength">
+        <span class="strength-icon">◈</span>
+        <div class="strength-title">Technical Leadership</div>
+        <div class="strength-desc">Led integration and engineering teams through large-scale modernization at Deloitte and LSEG. Owns technical decisions end-to-end.</div>
+      </div>
+      <div class="strength">
+        <span class="strength-icon">◈</span>
+        <div class="strength-title">Platform Modernization</div>
+        <div class="strength-desc">Migrated monolithic legacy systems to cloud-native microservice platforms across fintech, insurance, and banking — with full feature parity.</div>
+      </div>
+      <div class="strength">
+        <span class="strength-icon">◈</span>
+        <div class="strength-title">Cloud & DevOps</div>
+        <div class="strength-desc">Production experience with AWS, Terraform, Docker, Jenkins, and Ansible. Built CI/CD pipelines and infrastructure automation from scratch.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-label"><h2>// Experience</h2></div>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Software Engineer</div>
+            <div class="exp-company-line">
+              <span class="exp-company">Deloitte</span>
+              <span class="exp-type">Consultant</span>
+            </div>
+          </div>
+          <div class="exp-date">Jun 2024 — Nov 2025</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-divider"></div>
+          <ul class="exp-points">
+            <li>Led migration and modernization of a financial stock data management system, significantly reducing data latency across real-time market feeds.</li>
+            <li>Architected Kafka-based event streaming pipelines to handle high-volume market data with low-latency fan-out to multiple consumers.</li>
+            <li>Designed RESTful APIs for market data access, consumed by multiple trading and analytics downstream services.</li>
+            <li>Headed the integration team for a large-scale insurance modernization project via InsureMO — ensured seamless feature uplift and zero critical regressions.</li>
+            <li>Rolled out production feature flagging with GrowthBook enabling safe, incremental releases across live environments.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="chip key">.NET</span><span class="chip key">Kafka</span><span class="chip key">MongoDB</span>
+            <span class="chip">Redis</span><span class="chip">Docker</span><span class="chip">Polly</span>
+            <span class="chip">GrowthBook</span><span class="chip">React</span><span class="chip">InsureMO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Software Developer</div>
+            <div class="exp-company-line">
+              <span class="exp-company">ATA IT</span>
+              <span class="exp-type">Full-time</span>
+            </div>
+          </div>
+          <div class="exp-date">Jun 2023 — Jun 2024</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-divider"></div>
+          <ul class="exp-points">
+            <li>Led .NET platform modernization initiative, migrating multiple internal legacy systems to current .NET LTS versions with improved stability.</li>
+            <li>Refactored legacy codebases to improve maintainability, testability, and long-term supportability at scale.</li>
+            <li>Designed and standardized CI/CD pipelines across all systems using Jenkins and Ansible, enabling automated build, test, and deployment.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="chip key">.NET</span><span class="chip key">Jenkins</span>
+            <span class="chip">Ansible</span><span class="chip">SQL Server</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior .NET Developer</div>
+            <div class="exp-company-line">
+              <span class="exp-company">LSEG · London Stock Exchange Group</span>
+              <span class="exp-type">Full-time</span>
+            </div>
+          </div>
+          <div class="exp-date">Jul 2021 — Dec 2022</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-divider"></div>
+          <ul class="exp-points">
+            <li>Designed and delivered an internal RSM and SSO system, unifying authentication and access control across all internal services.</li>
+            <li>Maintained high reliability through xUnit test suites, enabling safer, faster deployments with full regression coverage.</li>
+            <li>Led load testing campaigns under peak concurrency to validate system behavior before production rollouts.</li>
+            <li>Contributed to Terraform-based IaC for environment provisioning on AWS, accelerating infrastructure setup and consistency.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="chip key">.NET</span><span class="chip key">AWS</span><span class="chip key">Terraform</span>
+            <span class="chip">Docker</span><span class="chip">DynamoDB</span><span class="chip">Jenkins</span><span class="chip">xUnit</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Fullstack Developer</div>
+            <div class="exp-company-line">
+              <span class="exp-company">Krungsri Nimble · Mobile Banking</span>
+              <span class="exp-type">Full-time</span>
+            </div>
+          </div>
+          <div class="exp-date">Apr 2020 — Jul 2021</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-divider"></div>
+          <ul class="exp-points">
+            <li>Owned the Marketplace module in a mobile banking app — responsible for reliability, performance, and user experience end-to-end.</li>
+            <li>Designed cross-application integrations between the mobile banking platform and multiple internal services.</li>
+            <li>Led cloud migration from on-premise infrastructure to AWS, improving scalability and reducing operational overhead.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="chip key">.NET</span><span class="chip key">AWS</span>
+            <span class="chip">Redis</span><span class="chip">SQL Server</span><span class="chip">Docker</span>
+            <span class="chip">Ansible</span><span class="chip">Jenkins</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Backend Developer</div>
+            <div class="exp-company-line">
+              <span class="exp-company">BRINK's Global Technology</span>
+              <span class="exp-type">Full-time</span>
+            </div>
+          </div>
+          <div class="exp-date">Dec 2017 — Apr 2020</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-divider"></div>
+          <ul class="exp-points">
+            <li>Built Java EE backend services supporting secure mobile apps for high-value logistics and cash transfer operations globally.</li>
+            <li>Developed SQL Server stored procedures for complex data processing pipelines.</li>
+            <li>Managed global JBoss deployments and led production issue investigations under live conditions.</li>
+            <li>Ran JMeter load tests to validate system resilience under peak transaction loads.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="chip">Java EE</span><span class="chip">SQL Server</span>
+            <span class="chip">JBoss</span><span class="chip">JMeter</span><span class="chip">RESTful APIs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Software Specialist</div>
+            <div class="exp-company-line">
+              <span class="exp-company">Freewill Solution</span>
+              <span class="exp-type">Full-time</span>
+            </div>
+          </div>
+          <div class="exp-date">Nov 2014 — Nov 2017</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-divider"></div>
+          <ul class="exp-points">
+            <li>Full ownership of the Risk Management module — a WinForms application for stock brokers to monitor and manage customer trading behavior.</li>
+            <li>Bridged Java backend services with C# .NET frontend logic within a single domain product.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="chip">Java</span><span class="chip">.NET / C#</span>
+            <span class="chip">SQL Server</span><span class="chip">WinForms</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-label"><h2>// Technical Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-title">Core Platform</div>
+        <div class="skill-items">
+          <div class="skill-row"><span class="skill-name">.NET 6/7/8 (C#)</span></div>
+          <div class="skill-row"><span class="skill-name">ASP.NET Core / Web API</span></div>
+          <div class="skill-row"><span class="skill-name">Microservices Architecture</span></div>
+          <div class="skill-row"><span class="skill-name">Domain-Driven Design</span></div>
+          <div class="skill-row"><span class="skill-name">Resilience (Polly)</span></div>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Data & Messaging</div>
+        <div class="skill-items">
+          <div class="skill-row"><span class="skill-name">Apache Kafka</span></div>
+          <div class="skill-row"><span class="skill-name">MongoDB</span></div>
+          <div class="skill-row"><span class="skill-name">Redis</span></div>
+          <div class="skill-row"><span class="skill-name">SQL Server</span></div>
+          <div class="skill-row"><span class="skill-name">AWS DynamoDB</span></div>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Cloud & Infrastructure</div>
+        <div class="skill-items">
+          <div class="skill-row"><span class="skill-name">Amazon Web Services</span></div>
+          <div class="skill-row"><span class="skill-name">Docker</span></div>
+          <div class="skill-row"><span class="skill-name">Terraform</span></div>
+          <div class="skill-row"><span class="skill-name">Ansible</span></div>
+          <div class="skill-row"><span class="skill-name">Linux / Bash</span></div>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">DevOps & Quality</div>
+        <div class="skill-items">
+          <div class="skill-row"><span class="skill-name">Jenkins CI/CD</span></div>
+          <div class="skill-row"><span class="skill-name">xUnit / Unit Testing</span></div>
+          <div class="skill-row"><span class="skill-name">Load Testing (JMeter)</span></div>
+          <div class="skill-row"><span class="skill-name">Feature Flags (GrowthBook)</span></div>
+          <div class="skill-row"><span class="skill-name">React (Frontend)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-left">resume · updated 2025</span>
+    <span class="footer-right">Open to Lead / Principal .NET roles</span>
+  </footer>
+
 </div>
-
-<div class="stat">
-<h3>10+ Systems</h3>
-<p>Enterprise Platforms Built</p>
-</div>
-
-<div class="stat">
-<h3>Millions</h3>
-<p>Financial Data Events Processed</p>
-</div>
-</div>
-
-</section>
-
-<section id="about">
-<h2>About Me</h2>
-<div class="card">
-<p>
-I'm Ibrahim Benjulamard, a backend engineer focused on designing reliable, scalable, and maintainable systems. My experience includes financial market platforms, enterprise backend infrastructure, and microservice ecosystems. I enjoy solving complex architecture problems and improving system performance.
-</p>
-</div>
-</section>
-
-<section id="systems">
-<h2>Systems I've Built</h2>
-<div class="grid">
-
-<div class="card">
-<div class="project-title">Real‑Time Market Data Platform</div>
-<p>High‑throughput system distributing stock market data feeds to trading platforms.</p>
-<div class="project-tech">Kafka • Java • Microservices • Redis</div>
-</div>
-
-<div class="card">
-<div class="project-title">Enterprise Insurance Platform Modernization</div>
-<p>Migrated legacy insurance platform to modern microservices architecture.</p>
-<div class="project-tech">.NET • REST APIs • Docker • SQL Server</div>
-</div>
-
-<div class="card">
-<div class="project-title">Secure Logistics Platform</div>
-<p>Backend services for secure pickup and delivery of high‑value items.</p>
-<div class="project-tech">JavaEE • JBoss • SQL Server</div>
-</div>
-
-</div>
-</section>
-
-<section id="projects">
-<h2>Highlighted Projects</h2>
-<div class="grid">
-
-<div class="card">
-<div class="project-title">Company Onboarding API</div>
-<p>B2B SaaS backend service for managing company onboarding workflows.</p>
-<div class="project-tech">.NET Core • Clean Architecture • PostgreSQL</div>
-</div>
-
-<div class="card">
-<div class="project-title">Authentication & JWT Platform</div>
-<p>Secure authentication service with role‑based access control.</p>
-<div class="project-tech">JWT • ASP.NET • Security Design</div>
-</div>
-
-<div class="card">
-<div class="project-title">Performance Testing Framework</div>
-<p>Load testing infrastructure validating backend performance under heavy traffic.</p>
-<div class="project-tech">JMeter • API Testing</div>
-</div>
-
-</div>
-</section>
-
-<section id="skills">
-<h2>Tech Stack</h2>
-<div class="card">
-
-<div class="skill">Java</div>
-<div class="skill">Spring Boot</div>
-<div class="skill">C#</div>
-<div class="skill">.NET Core</div>
-<div class="skill">Microservices</div>
-<div class="skill">Kafka</div>
-<div class="skill">Redis</div>
-<div class="skill">Docker</div>
-<div class="skill">PostgreSQL</div>
-<div class="skill">SQL Server</div>
-<div class="skill">REST APIs</div>
-<div class="skill">Clean Architecture</div>
-<div class="skill">System Design</div>
-
-</div>
-</section>
-
-<section id="experience">
-<h2>Experience</h2>
-<div class="card">
-
-<div class="timeline-item">
-<strong>Deloitte — Senior Software Engineer (Consultant)</strong>
-<span>2024 – 2025</span>
-<p>Built real‑time financial market data services and APIs used by trading platforms.</p>
-</div>
-
-<div class="timeline-item">
-<strong>ATA IT — Senior Software Developer</strong>
-<span>2023 – 2024</span>
-<p>Developed scalable backend services and enterprise integrations.</p>
-</div>
-
-<div class="timeline-item">
-<strong>LSEG — Senior .NET Developer</strong>
-<span>2021 – 2022</span>
-<p>Developed backend systems supporting global financial data infrastructure.</p>
-</div>
-
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<div class="card contact-card">
-<p>If you'd like to collaborate, hire me, or discuss architecture and backend systems.</p>
-<p><strong>Email:</strong> your.email@example.com</p>
-<p><strong>LinkedIn:</strong> linkedin.com/in/yourprofile</p>
-<p><strong>GitHub:</strong> github.com/yourusername</p>
-</div>
-</section>
-
-<footer>
-<p>© 2026 Ibrahim Benjulamard</p>
-</footer>
-
-</div>
-
 </body>
 </html>
