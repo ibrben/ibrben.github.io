@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ibrahim Benjulamard | Backend & Systems Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',sans-serif;background:#0b1120;color:#e2e8f0}
+.container{max-width:1150px;margin:auto;padding:40px 24px}
+
+nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
+nav a{color:#cbd5f5;text-decoration:none;margin-left:20px;font-size:14px}
+nav a:hover{color:white}
+
+.hero{padding:100px 0 80px 0}
+.hero h1{font-size:54px;margin:0;line-height:1.1}
+.hero span{color:#60a5fa}
+.hero p{margin-top:20px;color:#94a3b8;font-size:18px;max-width:650px}
+.hero-buttons{margin-top:30px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;background:#3b82f6;color:white;text-decoration:none;font-weight:600;margin-right:12px}
+.btn-outline{border:1px solid #475569;padding:12px 22px;border-radius:8px;color:#e2e8f0;text-decoration:none}
+
+.stats{display:flex;gap:40px;margin-top:50px;flex-wrap:wrap}
+.stat h3{margin:0;font-size:28px;color:#60a5fa}
+.stat p{margin:4px 0;color:#94a3b8}
+
+h2{margin-top:80px;margin-bottom:24px;font-size:30px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+
+.card{background:#111827;padding:26px;border-radius:14px;border:1px solid #1f2937;transition:all .25s}
+.card:hover{transform:translateY(-6px);border-color:#3b82f6}
+
+.skill{display:inline-block;background:#1f2937;padding:8px 12px;border-radius:6px;font-size:14px;margin:6px}
+
+.project-title{font-weight:600;font-size:18px;margin-bottom:8px}
+.project-tech{font-size:13px;color:#94a3b8;margin-top:10px}
+
+.timeline-item{margin-bottom:26px}
+.timeline-item strong{display:block;font-size:16px}
+.timeline-item span{font-size:13px;color:#94a3b8}
+
+.contact-card{text-align:center}
+.contact-card p{color:#94a3b8}
+
+footer{text-align:center;margin-top:80px;color:#64748b;font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<nav>
+<div><strong>Ibrahim</strong></div>
+<div>
+<a href="#about">About</a>
+<a href="#systems">Systems</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Backend & <span>Systems Engineer</span></h1>
+<p>
+Senior backend developer experienced in building scalable APIs, distributed systems, and high‑performance financial platforms. I specialize in Java, .NET, and microservice architecture for enterprise and fintech systems.
+</p>
+
+<div class="hero-buttons">
+<a class="btn" href="#contact">Contact Me</a>
+<a class="btn-outline" href="#projects">View Projects</a>
+</div>
+
+<div class="stats">
+<div class="stat">
+<h3>8+ Years</h3>
+<p>Software Engineering</p>
+</div>
+
+<div class="stat">
+<h3>10+ Systems</h3>
+<p>Enterprise Platforms Built</p>
+</div>
+
+<div class="stat">
+<h3>Millions</h3>
+<p>Financial Data Events Processed</p>
+</div>
+</div>
+
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="card">
+<p>
+I'm Ibrahim Benjulamard, a backend engineer focused on designing reliable, scalable, and maintainable systems. My experience includes financial market platforms, enterprise backend infrastructure, and microservice ecosystems. I enjoy solving complex architecture problems and improving system performance.
+</p>
+</div>
+</section>
+
+<section id="systems">
+<h2>Systems I've Built</h2>
+<div class="grid">
+
+<div class="card">
+<div class="project-title">Real‑Time Market Data Platform</div>
+<p>High‑throughput system distributing stock market data feeds to trading platforms.</p>
+<div class="project-tech">Kafka • Java • Microservices • Redis</div>
+</div>
+
+<div class="card">
+<div class="project-title">Enterprise Insurance Platform Modernization</div>
+<p>Migrated legacy insurance platform to modern microservices architecture.</p>
+<div class="project-tech">.NET • REST APIs • Docker • SQL Server</div>
+</div>
+
+<div class="card">
+<div class="project-title">Secure Logistics Platform</div>
+<p>Backend services for secure pickup and delivery of high‑value items.</p>
+<div class="project-tech">JavaEE • JBoss • SQL Server</div>
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<h2>Highlighted Projects</h2>
+<div class="grid">
+
+<div class="card">
+<div class="project-title">Company Onboarding API</div>
+<p>B2B SaaS backend service for managing company onboarding workflows.</p>
+<div class="project-tech">.NET Core • Clean Architecture • PostgreSQL</div>
+</div>
+
+<div class="card">
+<div class="project-title">Authentication & JWT Platform</div>
+<p>Secure authentication service with role‑based access control.</p>
+<div class="project-tech">JWT • ASP.NET • Security Design</div>
+</div>
+
+<div class="card">
+<div class="project-title">Performance Testing Framework</div>
+<p>Load testing infrastructure validating backend performance under heavy traffic.</p>
+<div class="project-tech">JMeter • API Testing</div>
+</div>
+
+</div>
+</section>
+
+<section id="skills">
+<h2>Tech Stack</h2>
+<div class="card">
+
+<div class="skill">Java</div>
+<div class="skill">Spring Boot</div>
+<div class="skill">C#</div>
+<div class="skill">.NET Core</div>
+<div class="skill">Microservices</div>
+<div class="skill">Kafka</div>
+<div class="skill">Redis</div>
+<div class="skill">Docker</div>
+<div class="skill">PostgreSQL</div>
+<div class="skill">SQL Server</div>
+<div class="skill">REST APIs</div>
+<div class="skill">Clean Architecture</div>
+<div class="skill">System Design</div>
+
+</div>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<div class="card">
+
+<div class="timeline-item">
+<strong>Deloitte — Senior Software Engineer (Consultant)</strong>
+<span>2024 – 2025</span>
+<p>Built real‑time financial market data services and APIs used by trading platforms.</p>
+</div>
+
+<div class="timeline-item">
+<strong>ATA IT — Senior Software Developer</strong>
+<span>2023 – 2024</span>
+<p>Developed scalable backend services and enterprise integrations.</p>
+</div>
+
+<div class="timeline-item">
+<strong>LSEG — Senior .NET Developer</strong>
+<span>2021 – 2022</span>
+<p>Developed backend systems supporting global financial data infrastructure.</p>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="card contact-card">
+<p>If you'd like to collaborate, hire me, or discuss architecture and backend systems.</p>
+<p><strong>Email:</strong> your.email@example.com</p>
+<p><strong>LinkedIn:</strong> linkedin.com/in/yourprofile</p>
+<p><strong>GitHub:</strong> github.com/yourusername</p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Ibrahim Benjulamard</p>
+</footer>
+
+</div>
+
+</body>
+</html>
