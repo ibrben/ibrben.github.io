@@ -589,7 +589,7 @@ footer {
 
 <!-- DOWNLOAD BUTTON -->
 <div class="dl-bar">
-  <button class="dl-btn" onclick="window.print()">
+  <button class="dl-btn" onclick="downloadFile('IBRAHIM.pdf')">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
       <polyline points="7 10 12 15 17 10"/>
@@ -597,6 +597,19 @@ footer {
     </svg>
     Download PDF
   </button>
+
+  <script>
+    function downloadFile(filename) {
+      const url = filename;
+      const a = document.createElement('a');
+      a.href = url;
+      a.setAttribute('download', filename);
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
 </div>
 
 <div class="page">
