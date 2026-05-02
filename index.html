@@ -600,6 +600,17 @@ footer {
 
   <script>
     function downloadFile(filename) {
+      // Call the API endpoint
+      fetch('https://stray-cat-api.onrender.com/api/msg/download')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Thanks for download');
+        })
+        .catch(error => {
+          console.error('Thanks for download');
+        });
+
+      // Proceed with file download
       const url = filename;
       const a = document.createElement('a');
       a.href = url;
